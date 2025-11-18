@@ -48,10 +48,8 @@ ahp_matrix_P1 <- convert_to_ahp(normalized_data$P1)
 # View the AHP matrix for P1
 print(ahp_matrix_P1)
 
-
 # View the AHP matrix for the first participant
 print(ahp_matrices)
-
 
 # Loop through and print AHP matrices for all participants
 for (i in 1:length(ahp_matrices)) {
@@ -60,10 +58,8 @@ for (i in 1:length(ahp_matrices)) {
   cat("\n") # Add a new line for better readability
 }
 
-
 install.packages("openxlsx")
 install.packages("ggplot2")
-
 
 library(openxlsx)
 
@@ -101,18 +97,15 @@ ggplot(ahp_matrix_long, aes(Var1, Var2, fill = value)) +
   coord_fixed()
 
 
-
-
 library(knitr)
 library(kableExtra)
 
-# Assuming ahp_matrices[[1]] is your AHP matrix for the first participant
+# Assuming ahp_matrices[[1]] is AHP matrix for the first participant
 ahp_matrix <- ahp_matrices[[1]]
 
 # Convert the matrix to a data frame for better handling
 ahp_df <- as.data.frame(ahp_matrix)
 
-# Adding row names as a new column for clarity
 ahp_df$Criteria = rownames(ahp_df)
 rownames(ahp_df) <- NULL
 
@@ -123,8 +116,6 @@ kable_styled <- kable(ahp_df, "html", booktabs = TRUE, caption = "AHP Matrix") %
 # Print the styled table
 kable_styled
 
-
-# Install and load the required package
 if (!require('eigenpr')) {
   install.packages('eigenpr', dependencies=TRUE, repos='http://cran.r-project.org')
 }
@@ -173,8 +164,8 @@ priority_vectors_and_CRs <- lapply(ahp_matrices, calculate_priority_vector)
 priority_vectors_and_CRs[['P10']]
 
 
-
 if (!require('remotes')) {
   install.packages('remotes', repos='http://cran.r-project.org')
 }
 remotes::install_github("davidski/eigenpr")
+
