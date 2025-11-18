@@ -1,3 +1,4 @@
+
 # Load necessary library
 library(dplyr)
 
@@ -57,3 +58,4 @@ BOD_data$Category <- cut(BOD_data$Normalized_Score,
 
 # Print the DataFrame
 print(BOD_data)
+
