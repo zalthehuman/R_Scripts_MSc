@@ -141,3 +141,4 @@ checkresiduals(remainder(decomp))
 autoplot(ts_data)
 decomp <- stl((ts_data, s.window =12))
 checkresiduals(remainder(ts_data))
+
