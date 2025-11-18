@@ -24,8 +24,9 @@ rating_scale <- function(score) {
 # Apply the rating scale to each alternative
 alternatives_scores$Rating <- sapply(alternatives_scores$Score, rating_scale)
 
-# Display the dataframe with the ratings
+# DF with the ratings
 print(alternatives_scores)
 View(alternatives_scores)
+
 
 
