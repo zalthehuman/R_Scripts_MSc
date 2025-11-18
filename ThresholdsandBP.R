@@ -2,15 +2,13 @@
 library(dplyr)
 library(tidyr)
 
-# Assuming 'data' is your dataframe and it contains several parameters like pH, DO, Temp, etc.
-
 # Load the data
 data <- read.csv("ActualD_CWB.csv")
 
-# Calculate mean and standard deviation for each parameter
+# Calculate mean and standard deviation 
 stats <- data %>% summarise(across(everything(), list(mean = ~mean(., na.rm = TRUE), sd = ~sd(., na.rm = TRUE))))
 
-# Reshape the stats dataframe for easier computation
+# Reshape the stats dataframe 
 stats_long <- pivot_longer(stats, cols = everything(), names_to = c(".value", "parameter"), names_sep = "_")
 
 # Join the stats back to the original data and categorize
@@ -28,14 +26,10 @@ data <- data %>%
 
 # Check the first few rows to confirm the categorization
 head(data)
-
 print(data)
-
 
 # Load necessary libraries
 library(dplyr)
-
-# Assuming 'data' is your dataframe containing several water quality parameters like pH, DO, Temp, etc.
 
 # Calculate mean, standard deviation, and breakpoints for each parameter
 breakpoints_summary <- data %>%
@@ -53,6 +47,6 @@ breakpoints_summary <- data %>%
 # View the breakpoints summary
 print(breakpoints_summary)
 
-
 # Write the breakpoints summary to a CSV file
 write.csv(breakpoints_summary, "breakpoints_summary.csv", row.names = FALSE)
+
