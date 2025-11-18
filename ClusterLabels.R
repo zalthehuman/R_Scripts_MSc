@@ -4,7 +4,6 @@ library(cluster)
 library(factoextra)
 library(dplyr)
 
-# Read the CSV file
 data <- read.csv("clusterStn1_ssn.csv")
 
 # Perform k-means clustering
@@ -38,4 +37,5 @@ print(labeled_data)
 pca_result <- prcomp(data[, 1:11], scale. = TRUE)
 fviz_pca_ind(pca_result, geom = "point", habillage = labeled_data$cluster_label,
              palette = c("#2E9FDF", "#FC4E07"), addEllipses = TRUE)
+
 
