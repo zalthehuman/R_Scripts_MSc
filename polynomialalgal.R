@@ -1,7 +1,6 @@
 # Load required library
 library(ggplot2)
 
-# Create the data frame
 algal_counts <- seq(0, 1, length.out = length(scores))
 scores <- c(0.15, 0.15, 0.0858, 0.15, 0.1284, 0.0677, 0.1116, 0.15, 0.0402, 0.0359,
             0, 0.072, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.0912, 0.0583, 0, 0.1138,
@@ -12,18 +11,18 @@ scores <- c(0.15, 0.15, 0.0858, 0.15, 0.1284, 0.0677, 0.1116, 0.15, 0.0402, 0.03
             0.1366, 0.121, 0, 0, 0, 0.15, 0.15, 0.15, 0.15)
 data <- data.frame(AlgalCount = algal_counts, Score = scores)
 
-# Fit a polynomial regression model
+# Fitting a polynomial regression model
 model <- lm(Score ~ poly(AlgalCount, degree = 4, raw = TRUE), data = data)
 
-# Predict values for a smooth curve
+# Predicting values for a smooth curve
 pred_data <- data.frame(AlgalCount = seq(min(data$AlgalCount), max(data$AlgalCount), length.out = 300))
 pred_data$Score <- predict(model, newdata = pred_data)
 
-# Calculate the first derivative of the polynomial fit
+# Calculating the first derivative of the polynomial fit
 library(pracma)
 pred_data$Derivative <- diff(c(0, pred_data$Score)) / diff(c(0, pred_data$AlgalCount))
 
-# Plotting
+
 ggplot(data, aes(x = AlgalCount, y = Score)) +
   geom_point(color = "blue") +
   geom_line(data = pred_data, aes(y = Score), color = "red") +
@@ -31,3 +30,4 @@ ggplot(data, aes(x = AlgalCount, y = Score)) +
   labs(title = "Polynomial Fit and Derivative Analysis of Algal Count",
        x = "Normalized Algal Count", y = "Score / Derivative (scaled)") +
   theme_minimal()
+
