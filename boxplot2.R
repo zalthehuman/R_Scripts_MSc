@@ -2,8 +2,7 @@
 library(ggplot2)
 library(tidyr)
 
-# Data from the provided table (replace this with your actual data frame creation code)
-# Make sure to replace 'X2017', 'X2018', etc. with the actual column names from your data frame
+
 algal_counts <- data.frame(
   Month = c('January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'),
@@ -46,3 +45,4 @@ print(boxplot)
 
 # Save the plot to a file
 ggsave("algal_counts_boxplot.png", boxplot, width = 10, height = 6)
+
