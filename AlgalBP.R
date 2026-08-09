@@ -19,7 +19,7 @@ algal_counts <- data.frame(
 )
   # ... (continue for the other years)
 
-# Convert the data from wide to long format for ggplot2 using pivot_longer()
+# Wide to long format for ggplot2 using pivot_longer()
 algal_long <- pivot_longer(
   algal_counts,
   cols = -c(Month, Season),
@@ -27,7 +27,7 @@ algal_long <- pivot_longer(
   values_to = "Algal_Count"
 )
 
-# Create the boxplot using ggplot2
+# Boxplot
 boxplot <- ggplot(algal_long, aes(x = Season, y = Algal_Count, fill = Season)) +
   geom_boxplot() +
   facet_wrap(~ Year, scales = 'free_y') + # Facet by Year, with independent y scales
